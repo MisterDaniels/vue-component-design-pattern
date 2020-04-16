@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Events Stuff</h2>
-  
+    <EventCard />
     <h2>Movies Stuff</h2>
     <div class="movies-list">
       <MoviePoster title="Guardiões da Galáxia 2" image="https://www.emaisgoias.com.br/wp-content/uploads/2018/06/guardi%C3%B5es.jpg" length="120" />
@@ -14,12 +14,14 @@
 </template>
 
 <script>
-import MoviePoster from '../components/movie-poster';
+import MoviePoster from '@/components/movie-poster';
+import EventCard from '@/components/event-card';
 
 export default {
   name: 'Home',
   components: {
-    MoviePoster
+    MoviePoster,
+    EventCard
   },
   props: {
     msg: String

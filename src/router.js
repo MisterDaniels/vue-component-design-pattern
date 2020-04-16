@@ -20,9 +20,10 @@ export default new Router({
             component: EventCreate
         },
         {
-            path: 'event',
+            path: 'event/:id',
             name: 'event',
-            component: EventShow
+            component: EventShow,
+            props: true
         }
     ]
 });
