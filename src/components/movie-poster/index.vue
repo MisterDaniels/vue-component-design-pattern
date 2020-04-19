@@ -12,6 +12,7 @@
         <div class="movie-length">
             <p>{{ length }}</p>
         </div>
+        <button class="movie-button">See more</button>
     </div>
 </template>
 
@@ -100,6 +101,17 @@
         width: 50%;
         bottom: 0;
         right: 0;
+        z-index: 1;
+    }
+
+    .movie-button {
+        position: absolute;
+        border: none;
+        background-color: transparent;
+        color: #fff;
+        font-weight: 600;
+        width: 100%;
+        bottom: 20%;
         z-index: 1;
     }
 </style>

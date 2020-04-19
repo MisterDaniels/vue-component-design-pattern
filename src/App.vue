@@ -59,13 +59,12 @@ export default {
   h4,
   h5,
   h6 {
-    display: flex;
     align-items: center;
     font-family: 'Montserrat', sans-serif;
   }
 
   h1 {
-    font-size: 50px;
+    font-size: 30px;
     font-weight: 700;
   }
 

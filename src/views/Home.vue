@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Events Stuff</h2>
-    <EventCard />
+    <EventCard v-for="event in events" :key="event.id" :event="event" />
     <h2>Movies Stuff</h2>
     <div class="movies-list">
       <MoviePoster title="Guardiões da Galáxia 2" image="https://www.emaisgoias.com.br/wp-content/uploads/2018/06/guardi%C3%B5es.jpg" length="120" />
@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import EventService from '../services/EventService';
+
 import MoviePoster from '@/components/movie-poster';
 import EventCard from '@/components/event-card';
 
@@ -25,6 +27,20 @@ export default {
   },
   props: {
     msg: String
+  },
+  data() {
+    return {
+      events: []
+    }
+  },
+  created() {
+    EventService.getEvents()
+      .then(res => {
+        this.events = res.data;
+      })
+      .catch(error => {
+        console.log('error' + error.response);
+      });
   }
 }
 </script>
