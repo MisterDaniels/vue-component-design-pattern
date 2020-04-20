@@ -10,7 +10,7 @@
 
 <script>
 import NotificationBar from '@/components/notification-bar';
-import { mapState } from 'vuex'
+import { mapState } from 'vuex';
 
 export default {
   components: {

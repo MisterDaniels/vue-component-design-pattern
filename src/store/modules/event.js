@@ -29,14 +29,14 @@ export const actions = {
                 commit('ADD_EVENT', event);
                 const notification = {
                     type: 'success',
-                    mesage: 'Your event has been created!'
+                    message: 'Your event has been created!'
                 };
                 
                 dispatch('notification/add', notification, { root: true });
             }).catch(error => {
                 const notification = {
                     type: 'error',
-                    mesage: 'There was a problem creating your event: ' + error.message
+                    message: 'There was a problem creating your event: ' + error.message
                 };
                 
                 dispatch('notification/add', notification, { root: true });
@@ -53,7 +53,7 @@ export const actions = {
                 .catch(error => {
                     const notification = {
                         type: 'error',
-                        mesage: 'There was a problem fetching events: ' + error.message
+                        message: 'There was a problem fetching events: ' + error.message
                     };
                     
                     dispatch('notification/add', notification, { root: true });
@@ -72,7 +72,7 @@ export const actions = {
                     .catch(error => {
                         const notification = {
                             type: 'error',
-                            mesage: 'There was a problem fetching event: ' + error.message
+                            message: 'There was a problem fetching event: ' + error.message
                         };
                         
                         dispatch('notification/add', notification, { root: true });

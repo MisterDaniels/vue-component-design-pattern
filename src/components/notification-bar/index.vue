@@ -1,6 +1,6 @@
 <template>
   <div class="notification-bar" :class="notificationTypeClass">
-    <p>{{ notification.message }}</p>
+    <p v-if="notification">{{ notification.message }}</p>
   </div>
 </template>
 
