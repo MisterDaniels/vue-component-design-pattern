@@ -1,14 +1,15 @@
-import Vue from 'vue'
+import Vue from 'vue';
 import router from './router';
-import App from './App.vue'
-import upperFirst from 'lodash/upperFirst'
-import camelCase from 'lodash/camelCase'
-    
+import App from './App.vue';
+import upperFirst from 'lodash/upperFirst';
+import camelCase from 'lodash/camelCase';
+import store from './store/store';    
+
 const requireComponent = require.context(
   './components/base',
   true,
   /Base[A-Z]\w+\.(vue|js)$/
-)
+);
     
 requireComponent.keys().forEach(fileName => {
   const componentConfig = requireComponent(fileName);
@@ -23,11 +24,12 @@ requireComponent.keys().forEach(fileName => {
     componentName,
     componentConfig.default || componentConfig
   );
-}) 
+});
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
   router,
+  store,
   render: h => h(App),
-}).$mount('#app')
+}).$mount('#app');

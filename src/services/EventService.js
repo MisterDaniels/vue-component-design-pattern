@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiCLient = axios.create({
+const apiClient = axios.create({
     baseURL: 'http://localhost:3000',
     withCredentials: false,
     headers: {
@@ -10,11 +10,15 @@ const apiCLient = axios.create({
 });
 
 export default {
-    getEvents() {
-        return apiCLient.get('/events');
+    getEvents(perPage, page) {
+        return apiClient.get('/events?_limit=' + perPage + "&_page=" + page);
     },
 
     getEvent(id) {
-        return apiCLient.get('/events/' + id);
+        return apiClient.get('/events/' + id);
+    },
+
+    postEvent(event) {
+        return apiClient.post('/events/', event);
     }
 }

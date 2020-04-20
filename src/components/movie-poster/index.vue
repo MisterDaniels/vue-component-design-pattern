@@ -28,12 +28,15 @@
                 type: String,
                 default: 'https://www.bauducco.com.br/wp-content/uploads/2017/09/default-placeholder-1-2.png',
                 validator: propValue => {
-                    const hasImageDirectory = propValue.indexOf('/images/') > -1;
-                    const isPNG = propValue.endsWith('.png');
-                    const isJPEG = propValue.endsWith('.jpg') || propValue.endsWith('.jpeg');
-                    const hasValidExtension = isPNG || isJPEG;
+                    // const hasImageDirectory = propValue.indexOf('/images/') > -1;
+                    // const isPNG = propValue.endsWith('.png');
+                    // const isJPEG = propValue.endsWith('.jpg') || propValue.endsWith('.jpeg');
+                    // const hasValidExtension = isPNG || isJPEG;
 
-                    return hasImageDirectory && hasValidExtension;
+                    // return hasImageDirectory && hasValidExtension;
+                    if (propValue) {
+                        return true;
+                    }
                 }
             },
             length: {

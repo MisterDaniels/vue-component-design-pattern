@@ -2,7 +2,16 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Events Stuff</h2>
-    <EventCard v-for="event in events" :key="event.id" :event="event" />
+    <h1>Events for user {{ user.user.name }}</h1>
+    <EventCard v-for="event in event.events" :key="event.id" :event="event" />
+    <template v-if="page != 1">
+      <router-link :to="{ name: 'home', query: { page: page - 1 } }" rel="prev">
+        Prev Page
+      </router-link>
+    </template>
+    <router-link v-if="hasNextPage" :to="{ name: 'home', query: { page: page + 1 } }" rel="next">
+      Next Page
+    </router-link>
     <h2>Movies Stuff</h2>
     <div class="movies-list">
       <MoviePoster title="Guardiões da Galáxia 2" image="https://www.emaisgoias.com.br/wp-content/uploads/2018/06/guardi%C3%B5es.jpg" length="120" />
@@ -14,7 +23,7 @@
 </template>
 
 <script>
-import EventService from '../services/EventService';
+import { mapState } from 'vuex';
 
 import MoviePoster from '@/components/movie-poster';
 import EventCard from '@/components/event-card';
@@ -28,20 +37,23 @@ export default {
   props: {
     msg: String
   },
-  data() {
-    return {
-      events: []
-    }
-  },
   created() {
-    EventService.getEvents()
-      .then(res => {
-        this.events = res.data;
-      })
-      .catch(error => {
-        console.log('error' + error.response);
-      });
-  }
+    this.perPage = 3;
+
+    this.$store.dispatch('event/fetchEvents', {
+      perPage: this.perPage,
+      page: this.page
+    });
+  },
+  computed: { 
+    page() {
+      return parseInt(this.$route.query.page) || 1
+    },
+    hasNextPage() {
+      return this.event.eventsTotal > this.page * this.perPage;
+    },
+    ...mapState(['event', 'user']) 
+  },
 }
 </script>
 
