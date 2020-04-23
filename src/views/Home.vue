@@ -13,6 +13,7 @@
       Next Page
     </router-link>
     <h2>Movies Stuff</h2>
+    <Modal :movie="movie" />
     <div class="movies-list">
       <MoviePoster title="Guardiões da Galáxia 2" image="https://www.emaisgoias.com.br/wp-content/uploads/2018/06/guardi%C3%B5es.jpg" length="120" />
       <MoviePoster image="https://i.insider.com/55789809f7b1051e008b5161?width=1100&format=jpeg&auto=webp" length="120" price="20"/>
@@ -27,15 +28,24 @@ import { mapState } from 'vuex';
 
 import MoviePoster from '@/components/movie-poster';
 import EventCard from '@/components/event-card';
+import Modal from '@/components/modal';
 
 export default {
   name: 'Home',
   components: {
     MoviePoster,
-    EventCard
+    EventCard,
+    Modal
   },
   props: {
     msg: String
+  },
+  data: function() {
+    return { 
+      movie: {
+        title: 'Tarzan'
+      }
+    }
   },
   created() {
     this.perPage = 3;
